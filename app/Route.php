@@ -2,19 +2,18 @@
 
 namespace app;
 
-class Route
-{
-    public function getUrl()
-    {
-        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    }
+use dmf\init\Bootstrap;
 
-    public function initRoutes()
+class Route extends Bootstrap
+{
+    protected function initRoutes()
     {
         $routes['home'] = array(
             'route' => '/',
             'controller' => 'indexController',
             'action' => 'index'
         );
+
+        $this->setRoutes($routes);
     }
 }
