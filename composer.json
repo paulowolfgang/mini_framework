@@ -1,0 +1,19 @@
+{
+    "name": "paulowolfgang/mini_framework",
+    "description": "Mini framework MVC desenvolvido em PHP para fins acadêmicos",
+    "license": "GNU GPL",
+    "require": {
+		"php": ">=  8.1"
+	},
+    "authors": [
+        {
+            "name": "Paulo Wolfgang",
+            "email": "contato@paulowolfgang.dev.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\":"app"
+        }
+    }
+}
