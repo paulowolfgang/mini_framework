@@ -1,46 +1,46 @@
 <?php
 
-namespace dmf\init;
+    namespace dmf\init;
 
-abstract class Bootstrap
-{
-    private $routes;
-
-    abstract protected function initRoutes();
-
-    public function __construct()
+    abstract class Bootstrap
     {
-        $this->initRoutes();
-        $this->run($this->getUrl());
-    }
+        private $routes;
 
-    public function getRoutes()
-    {
-        return $this->routes;
-    }
+        abstract protected function initRoutes();
 
-    public function setRoutes(array $routes)
-    {
-        $this->routes = $routes;
-    }
-
-    protected function getUrl()
-    {
-        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    }
-
-    protected function run($url)
-    {
-        foreach($this->getRoutes() as $key => $route)
+        public function __construct()
         {
-            if($url == $route['route'])
+            $this->initRoutes();
+            $this->run($this->getUrl());
+        }
+
+        public function getRoutes()
+        {
+            return $this->routes;
+        }
+
+        public function setRoutes(array $routes)
+        {
+            $this->routes = $routes;
+        }
+
+        protected function getUrl()
+        {
+            return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        }
+
+        protected function run($url)
+        {
+            foreach($this->getRoutes() as $key => $route)
             {
-                $class = "app\\Controllers\\" . ucfirst($route['controller']);
-                $controller = new $class;
-                
-                $action = $route['action'];
-                $controller->$action();
+                if($url == $route['route'])
+                {
+                    $class = "app\\Controllers\\" . ucfirst($route['controller']);
+                    $controller = new $class;
+                    
+                    $action = $route['action'];
+                    $controller->$action();
+                }
             }
         }
     }
-}

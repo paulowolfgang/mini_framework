@@ -1,13 +1,17 @@
 <?php
 
-namespace app\Controllers;
+    namespace app\Controllers;
 
-use dmf\controller\Action;
+    // Models
+    use MFP\Model\Container;
 
-class indexController extends Action
-{
-    public function index()
+    // Resources
+    use dmf\controller\Action;
+
+    class indexController extends Action
     {
-        $this->render('index');
+        public function index()
+        {
+            $this->render('index');
+        }
     }
-}

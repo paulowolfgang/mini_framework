@@ -1,5 +1,5 @@
 <?php
 
-require_once '../vendor/autoload.php';
+    require_once '../vendor/autoload.php';
 
-$route = new \app\Route;
+    $route = new \app\Route;
